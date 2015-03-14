@@ -79,7 +79,7 @@ describe("About Crockford's inheritance improvement", function() {
   });
   
   it("should set constructor parameters on the base object", function() {
-    expect(this.gonzo.age).toEqual(3;
+    expect(this.gonzo.age).toEqual(3);
     expect(this.gonzo.hobby).toEqual("daredevil performer");
   });
   
