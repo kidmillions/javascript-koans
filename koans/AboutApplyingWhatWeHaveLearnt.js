@@ -117,16 +117,17 @@ describe("About Applying What We Have Learnt", function() {
   /* UNCOMMENT FOR EXTRA CREDIT */
   
   it("should find the largest prime factor of a composite number", function () {
+  
     function isPrime(n) {
       if (n >= 1 && n <= 2) {
           return true;
       } else {
         var maxTestValue = Math.ceil(Math.sqrt(n));
-        for (var i = 2; i <= maxTestValue; i++) {
-          if (n % i === 0) {
-            return false;
+          for (var i = 2; i <= maxTestValue; i++) {
+            if (n % i === 0) {
+              return false;
+           }
           }
-        }
         return true;
       }
     }
@@ -160,30 +161,67 @@ describe("About Applying What We Have Learnt", function() {
 
 
     expect(findGreatestPrimeFactor(18)).toBe(3);
-  
+   
     expect(findGreatestPrimeFactor(3)).toBe('console.error("You entered a prime number.")');
 
-  });
+ });
 
   it("should find the largest palindrome made from the product of two 3 digit numbers", function () {
-
     function palindromeTest(n) {
-      //stringify number
-      //
+      var digitArray = n.toString().split('');
+
+      return _(digitArray).all(function(x) {
+        return x === (digitArray[digitArray.length - digitArray.indexOf(x)]);
+      })
     }
 
-    //multiply two arguments
-    //decrement to zero
-    //break when number is palindrome
-    
+    function findGreatestPalindrome(a, b) {
+      var i = a * b;
+      for (i > 0; i--) {
+        if (palindromeTest(i)) {
+          break;
+        }
+      }
+      return i;
+    }
+
+    expect(findGreatestPalindrome(122)).toBe(121);
+
   });
 
   it("should find the smallest number divisible by each of the numbers 1 to 20", function () {
-      
-    
-  });
+
+
+    function findLCM() {
+      var array = _.range(20);
+      var i;
+      for (i = 40; i < 10000; i++) {
+        var testDivisors = _(array).all(function(x) {
+          return i % x === 0;
+        });
+        if (testDivisors) {
+          break;
+        }
+      }
+      return i;
+    });
+
+    expect(findLCM()).toEqual(232792560); //I think.
 
   it("should find the difference between the sum of the squares and the square of the sums", function () {
+
+    function findDifference(a, b) {
+      var sumOfSquares = function(a, b) {
+        return Math.sqrt(a) + Math.sqrt(b);
+      }
+
+      var squareOfSums = function(a, b) {
+        return Math.sqrt(a + b);
+      }
+
+      return sumOfSquares(a, b) - squareOfSums(a, b);
+
+    }
     
   });
 
