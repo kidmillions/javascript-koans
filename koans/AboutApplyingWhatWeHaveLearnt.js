@@ -115,12 +115,66 @@ describe("About Applying What We Have Learnt", function() {
 
   /*********************************************************************************/
   /* UNCOMMENT FOR EXTRA CREDIT */
-  /*
-  it("should find the largest prime factor of a composite number", function () {
   
+  it("should find the largest prime factor of a composite number", function () {
+    function isPrime(n) {
+      if (n >= 1 && n <= 2) {
+          return true;
+      } else {
+        var maxTestValue = Math.ceil(Math.sqrt(n));
+        for (var i = 2; i <= maxTestValue; i++) {
+          if (n % i === 0) {
+            return false;
+          }
+        }
+        return true;
+      }
+    }
+
+    
+    
+    function findPrimeNumbers(n) {
+      var primesArray = [];
+      for (var i = n; i > 0; i--) {
+        if (isPrime(i)) {
+           primesArray.push(i);
+        }
+      }
+      return primesArray;
+    }
+
+    function findGreatestPrimeFactor(n) {
+      if (isPrime(n)) {
+        return console.error("You entered a prime number.")
+      }
+
+      var testNumbers = findPrimeNumbers(n);
+
+      for (var i = 0; i < testNumbers.length; i++) {
+        if (n % testNumbers[i] === 0) {
+          console.log(testNumbers[i]);
+          return testNumbers[i];
+        }
+      }
+    }
+
+
+    expect(findGreatestPrimeFactor(18)).toBe(3);
+  
+    expect(findGreatestPrimeFactor(3)).toBe('console.error("You entered a prime number.")');
+
   });
 
   it("should find the largest palindrome made from the product of two 3 digit numbers", function () {
+
+    function palindromeTest(n) {
+      //stringify number
+      //
+    }
+
+    //multiply two arguments
+    //decrement to zero
+    //break when number is palindrome
     
   });
 
@@ -136,5 +190,5 @@ describe("About Applying What We Have Learnt", function() {
   it("should find the 10001st prime", function () {
 
   });
-  */
+  
 });
